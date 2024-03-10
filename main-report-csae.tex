@@ -1,0 +1,95 @@
+\documentclass[14pt, oneside]{altsu-report}
+
+\worktype{Отчёт по практике на тему:}
+\title{Рост дендрита}
+\author{М.\,Е.~Пивоваров}
+\groupnumber{5.205-1}
+\GradebookNumber{1337}
+\supervisor{И.\,А.~Шмаков}
+\supervisordegree{к.ф.-м.н., доцент}
+\ministry{Министерство науки и высшего образования}
+\country{Российской Федерации}
+\fulluniversityname{ФГБОУ ВО Алтайский государственный университет}
+\institute{Институт цифровых технологий, электроники и физики}
+\department{Кафедра вычислительной техники и электроники}
+\departmentchief{В.\,В.~Пашнев}
+\departmentchiefdegree{к.ф.-м.н., доцент}
+\shortdepartment{ВТиЭ}
+\abstractRU{
+Данная работа посвящена разработке программы "Рост дендрита" на языке программирования Python с использованием бибилиотеки FLTK.
+
+В работе рассмотрены теоретические и практические сведения о дендрите и процессе его образования, о библиотеке FLTK.
+}
+\abstractEN{Большой текст на английском!}
+\keysRU{рост дендрита, FLTK}
+\keysEN{computer simulation, distributed version control}
+
+\date{\the\year}
+
+% Подключение файлов с библиотекой.
+\addbibresource{graduate-students.bib}
+
+% Пакет для отладки отступов.
+%\usepackage{showframe}
+
+\begin{document}
+\maketitle
+
+\setcounter{page}{2}
+\makeabstract
+\tableofcontents
+
+\chapter*{Введение}
+\phantomsection\addcontentsline{toc}{chapter}{ВВЕДЕНИЕ}
+
+\textbf{Актуальность}
+
+\textbf{Цель}
+
+Разработать программу, которая моделирует рост дендрита, на языке программирования Python с использованием библиотеки FLTK. 
+
+\textbf{Задачи:}
+\begin{enumerate}
+\item Изучить и установаить библиотеку FLTK.
+\item Смоделировать рост дендрита.
+\item Написть программу.
+\end{enumerate}
+
+% Подключение первой главы (теория):
+\include{chapter-1-report-csae.tex}
+% Подключение второй главы (практическая часть):
+\include{chapter-2-report-csae.tex}
+% Подключение третий главы (практическая часть с тестированием:
+\include{chapter-3-report-csae.tex}
+
+\chapter*{Заключение}
+Надеюсь, что работа будет выполнена и в результате получится создать программу "Рост дендрита".
+\phantomsection\addcontentsline{toc}{chapter}{ЗАКЛЮЧЕНИЕ}
+
+\begin{enumerate}
+\item Пример ссылки на электронный источник~\cite{wikiRUDendrite, sfPyFLTK}.
+\item Пример ссылки на книгу одного автора~\cite{book1author}.
+\item Пример ссылки на книгу 5-ти и более авторов~\cite{book5author}.
+\end{enumerate}
+
+\newpage
+\phantomsection\addcontentsline{toc}{chapter}{СПИСОК ИСПОЛЬЗОВАННОЙ ЛИТЕРАТУРЫ}
+\printbibliography[title={Список использованной литературы}]
+
+\appendix
+\newpage
+\chapter*{\raggedleft\label{appendix1}Приложение}
+\phantomsection\addcontentsline{toc}{chapter}{ПРИЛОЖЕНИЕ}
+%\section*{\centering\label{code:appendix}Текст программы}
+
+\begin{center}
+\label{code:appendix}Текст программы
+\end{center}
+
+\begin{code}
+\captionof*{listing}{\centering\label{code:pi-example}Программа}
+\vspace{-1cm}\inputminted{py}{src/code.py}
+\end{code}
+
+\end{document}
+
