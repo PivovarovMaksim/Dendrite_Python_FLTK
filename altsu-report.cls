@@ -4,9 +4,10 @@
 % на кафедре Вычислительной техники и электроники Алтайского государственного университета.
 % Автор Шмаков Игорь Александрович.
 % Первая версия от 2021-06-08.
-% Версия от 2023-06-18
+% Версия от 2024-05-03
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{altsu-report}[2023/06/18 version 0.3 AltSU Template for CSaE Report]
+
+\ProvidesClass{altsu-report}[2024/05/03 version 0.4 AltSU Template for CSaE Report]
 
 %% Extreport options
 \DeclareOption{14pt}{
@@ -28,16 +29,12 @@
 \RequirePackage{tikz}
 \RequirePackage[onehalfspacing]{setspace}
 \RequirePackage[normalem]{ulem} %https://stackoverflow.com/questions/2553392/latex-rule-filling-the-line
+
 %%% Интервалы %%%
 %% По ГОСТ Р 7.0.11-2011, пункту 5.3.6 требуется полуторный интервал
 %% Реализация средствами класса (на основе setspace) ближе к типографской классике.
 %% И правит сразу и в таблицах (если со звёздочкой)
-%\DoubleSpacing*     % Двойной интервал
-%\OnehalfSpacing*    % Полуторный интервал
-%\SingleSpacing
-%\setSpacing{1.42}   % Полуторный интервал, подобный Ворду (возможно, стоит включать вместе с предыдущей строкой)
-%\onehalfspacing
-\setstretch{1.42}
+\setstretch{1.42}   % Полуторный интервал, подобный Ворду (возможно, стоит включать вместе с предыдущей строкой)
 
 %%% Макет страницы %%%
 % Выставляем значения полей (ГОСТ 7.0.11-2011, 5.3.7)
@@ -72,25 +69,19 @@
 \defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию. Для XeTeX опцию Renderer=Basic можно не указывать, о\на необходима для LuaTeX
 \setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа. 
 
-%\setmainfont{Times New Roman} %% задаёт основной шрифт документа. 
-%\setkeys{russian}{babelshorthands=true}
-
 \setromanfont[Mapping=tex-text]{Times New Roman}
-%\setsansfont[Mapping=tex-text]{Courier New}
-%\setmonofont[Mapping=tex-text]{Arial}
 
 \newfontfamily{\cyrillicfont}{Times New Roman}
 \newfontfamily{\cyrillicfontrm}{Times New Roman}
 \newfontfamily{\cyrillicfonttt}{Times New Roman}
 \newfontfamily{\cyrillicfontsf}{Times New Roman}
-%\newfontfamily{\cyrillicfonttt}{Courier New}
-%\newfontfamily{\cyrillicfontsf}{Arial}
 
 \RequirePackage{graphicx}
 \RequirePackage{float}
 
 %%% Таблицы %%%
 \RequirePackage{booktabs, longtable, ltcaption, tabulary, tabu}
+
 % Улучшенное форматирование таблиц
 \RequirePackage{multirow, makecell} 
 
@@ -98,6 +89,7 @@
 \def\zz {
   \ifx\[$\else\aftergroup\zzz\fi
 }
+
 %$ \] % <-- чиним подсветку синтаксиса в некоторых редакторах
 \def\zzz {
   \setbox0\lastbox
@@ -110,12 +102,15 @@
 
 % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
 \RequirePackage{soulutf8}
+
 % Запятая в десятичных дробях
 \RequirePackage{icomma}
+
 % Красная строка.
 \RequirePackage{indentfirst}
 \RequirePackage[labelsep=space,skip=6pt]{caption}
 \setlength{\belowcaptionskip}{6pt plus 2pt minus 1pt}
+
 % Пакет отвечающий за листинги.
 \RequirePackage[newfloat]{minted}
 \newenvironment{code}{\captionsetup{type=listing}\vspace{\parindent}}{}
@@ -180,6 +175,7 @@
   \renewcommand{\thesection}{\thechapter\arabic{section}.}
   \renewcommand{\thesubsection}{\thechapter\arabic{section}.\arabic{subsection}.}
 }
+
 % Правка 20230617
 \renewcommand{\labelenumii}{\theenumii}
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
@@ -190,18 +186,18 @@
 \usepackage[dotinlabels]{titletoc}
 \usepackage[pagestyles]{titlesec}
 \titleformat{\chapter}%
-            {\centering\normalfont\bfseries}
+            {\centering} %\normalfont\bfseries\normalsize
             {\thechapter}
             {14pt}
             {\MakeUppercase}
 \titleformat{\section}%
-            {\normalfont\bfseries}
+            {}
             {\thesection}
             {14pt}
             {}
 \titleformat{\subsection} % command
             [hang]                 % shape
-            {\bfseries\normalsize} % format
+            {} % format
             {\thesubsection}       % label
             {1em}                  % Spacing between label and title
             {}                     % before code
@@ -231,24 +227,8 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancyplain}
 \fancyhf{}
-%\rhead{\thepage} % номер страницы в правом верхнем углу
-%\fancyhead[R]{\textsf{\thepage}}
-\fancyhead[R]{\normalfont\bfseries\textbf{\thepage}} % номер страницы в правом верхнем углу
+\fancyhead[R]{\thepage} % номер страницы в правом верхнем углу \fancyhead[R]{\normalfont\bfseries\textbf{\thepage}}
 \renewcommand{\headrulewidth}{0pt} % без линии
-
-
-%\fancypagestyle{plain}{
-%  \fancyhf{}
-%  \rhead{\thepage} % номер страницы в правом верхнем углу
-%  \fancyhead[E]{\thepage}
-%  \renewcommand{\headrulewidth}{0pt} % без линии
-%}
-%\fancypagestyle{fancyplain}{
-%  \fancyhf{}
-%  \rhead{\thepage} % номер страницы в правом верхнем углу
-%  \fancyhead[E]{\thepage}
-%  \renewcommand{\headrulewidth}{0pt} % без линии
-%}
 
 \RequirePackage{csquotes}
 \RequirePackage{epigraph}
@@ -263,7 +243,7 @@
 ]{biblatex}
 \urlstyle{same}
 
-% Добавлени пакета SVG для подключения векторных рисунков - 20230618
+% Добавление пакета SVG для подключения векторных рисунков - 20230618
 \RequirePackage{svg}
 
 %% Additional TeX/LaTeX code...
@@ -319,6 +299,15 @@
 \newcommand{\@worktype}{\#}
 \newcommand{\worktype}[1]{\edef\@worktype{{#1}}}
 
+\newcommand{\@countWorkPage}{\#}
+\newcommand{\countWorkPage}[1]{\edef\@countWorkPage{{#1}}}
+\newcommand{\@countWorkImg}{\#}
+\newcommand{\countWorkImg}[1]{\edef\@countWorkImg{{#1}}}
+\newcommand{\@countWorkLit}{\#}
+\newcommand{\countWorkLit}[1]{\edef\@countWorkLit{{#1}}}
+\newcommand{\@countWorkTab}{\#}
+\newcommand{\countWorkTab}[1]{\edef\@countWorkTab{{#1}}}
+
 % Правка для таблицы, оформление по требованиям кафедры.
 \def\fnum@table{\hfill\tablename~\thetable\\}
 % Правки для рисунка, таблицы и листинга, оформление по требованиям кафедры.
@@ -333,9 +322,9 @@
   \newlength{\ML}
   \settowidth{\ML}{«\underline{\hspace{0.7cm}}» \underline{\hspace{2cm}}}
   
-  \newpage
-  
+  \newpage  
   \thispagestyle{empty}
+  
   \begin{center}
     \@ministry~\@country
     \vspace{0.5cm}
@@ -376,7 +365,7 @@
   \vfill
   
   \begin{center}
-    Барнаул~\@date~г.
+    Барнаул~\@date
   \end{center}
   
   \newpage
@@ -392,30 +381,20 @@
     РЕФЕРАТ
   \end{center}
   
-  Полный объём работы составляет \formbytotal{TotPages}{страниц}{у}{ы}{}, включая
-  \formbytotal{totalcount@figure}{рисун}{ок}{ка}{ков} и
-  \formbytotal{totalcount@table}{таблиц}{у}{ы}{}.
+  Объем работы листов \hfill \@countWorkPage
+    
+  Количество рисунков \hfill \@countWorkImg
+    
+  Количество используемых источников \hfill \@countWorkLit
+    
+  Количество таблиц \hfill \@countWorkTab
+
+  {\MakeUppercase{\@keysRU}}.
   
   \@abstractRU
   
-  Ключевые слова: \@keysRU.
-  
   Отчёт оформлена с помощью системы компьютерной вёрстки \TeX{} и его расширения \XeTeX{} 
   из дистрибутива \textit{TeX Live}.
-  
-  \begin{center}
-    ABSTRACT
-  \end{center}
-  
-  The total amount of work is \formbytotal{TotPages}{page}{}{}{'s}, include
-  \formbytotal{totalcount@figure}{image}{}{}{'s} and \formbytotal{totalcount@table}{table}{}{}{'s}.
-  
-  \@abstractEN
-  
-  Keyword: \@keysEN.
-  
-  Report is framed using the computer layout system \TeX{} and its extension \XeTeX{}
-  from the distribution \textit{TeX Live}.
 }
 
 \endinput
