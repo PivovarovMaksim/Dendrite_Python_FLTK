@@ -626,14 +626,12 @@ def main():
 		with open(FILENAME, "r") as file:
 			j = 0
 			for line in file:
-				#print(list(line))
 				if re.fullmatch(reg_cor, line):
 					s = line.split("\n")
 					s = s[0].split(" = ")
 					if (re.fullmatch(reg_0, line) and j in (0, 1, 2, 3, 4, 10)) \
 						or (re.fullmatch(reg_1, line) and j in (6, 7, 8, 9)) \
 						or j == 5:
-						#print(f"{j} - yes")
 						setting[j] = type(SETTING_DFL[j])(s[1])
 						j += 1
 					else:
