@@ -1,0 +1,11 @@
+number_particles = 500
+number_particles_inv = 0
+w = 300
+h = 300
+particle_size = 5
+intervals = 
+p_u = 0.15
+p_d = 0.35
+p_l = 0.25
+p_r = 0.25
+extension = 0
